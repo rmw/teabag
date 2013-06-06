@@ -53,6 +53,13 @@ describe "Teabag.fixture", ->
       @mockXhr.onreadystatechange()
       expect(document.getElementById("teabag-fixtures").innerHTML).toBe("_content_")
 
+    #it "allows appending using jQuery append", ->
+      #fixture.load("fixture_with_js.html", false, true)
+      #@mockXhr.onreadystatechange()
+      #expect(document.getElementById("teabag-fixtures").tagName).toBe("DIV")
+      #expect(document.getElementById("teabag-fixtures").innerHTML).toBe("_content_")
+
+
     it "handles JSON fixtures", ->
       @mockXhr.responseText = '{"foo": "bar"}'
       @mockXhr.getResponseHeader = -> "application/json; encoding-blah"

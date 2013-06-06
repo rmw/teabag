@@ -10,10 +10,14 @@ class Teabag.fixture
   @preload: (urls...) -> preload(url) for url in urls
 
 
-  @load: (urls..., append = false) ->
-    unless typeof(append) == "boolean"
-      urls.push(append)
+  @load: (urls..., options = {}) ->
+    if typeof(options) == "string"
+      urls.push(options)
       append = false
+      run_js = false
+    else
+      append = (typeof(options) == "boolean" ? options : options?.append) || false
+      run_js = options?.run_js || false #(typeof(options) == "object" ? options.run_js : false)
     load(url, append || index > 0) for url, index in urls
 
 
